@@ -23,7 +23,7 @@ namespace COMMON_PROJECT_STRUCTURE_API.services
                     new MySqlParameter("@description", rData.addInfo["description"]),
                     new MySqlParameter("@personnel", rData.addInfo["personnel"]),
                     new MySqlParameter("@duedate", rData.addInfo["duedate"]),
-                     new MySqlParameter("@status", rData.addInfo["status"])
+                    new MySqlParameter("@status", rData.addInfo["status"])
                   
  
                 };

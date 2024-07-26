@@ -31,17 +31,14 @@ ConfigureServices(s =>
               s.AddSingleton<generate>();
                s.AddSingleton<verify>();
                 s.AddSingleton<updatepasswordarmy>();
-               
                  s.AddSingleton<get_all_assignstatus>();
                   s.AddSingleton<asisignmentStatus>();
-
                    s.AddSingleton<get_all_missionstatus>();
                    s.AddSingleton<army_missionstatus>();
                      s.AddSingleton<delete_soldierlist>();
                        s.AddSingleton<delete_missionlist>();
                         s.AddSingleton<delete_assignmentlist>();
                          s.AddSingleton<delete_notification>();
-
                           s.AddSingleton<delete_medicalappointment>();
                 
                  
