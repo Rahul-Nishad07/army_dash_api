@@ -18,6 +18,7 @@ namespace COMMON_PROJECT_STRUCTURE_API.services
                 var insertQuery = @"insert into pc_student.Army_Assignment(taskname,image,description,personnel,duedate,status) values(@taskname,@image,@description,@personnel,@duedate,@status)";
                 MySqlParameter[] insertParams = new MySqlParameter[]
                 {
+              
                     new MySqlParameter("@taskname", rData.addInfo["taskname"]),
                     new MySqlParameter("@image", rData.addInfo["image"]),
                     new MySqlParameter("@description", rData.addInfo["description"]),

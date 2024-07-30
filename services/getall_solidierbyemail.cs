@@ -16,10 +16,10 @@ namespace COMMON_PROJECT_STRUCTURE_API.services
             try
             {
                 // Insert new subscription
-                var insertQuery = @"select * from pc_student.Army_soldiers  where email=@email";
+                var insertQuery = @"select * from pc_student.Army_soldiers where email=@email";
                 MySqlParameter[] insertParams = new MySqlParameter[]
                 {
-                   new MySqlParameter("@email", rData.addInfo["email"]) ,
+                   new MySqlParameter("@email", rData.addInfo["email"]),
                    
                 };
                 var insertResult = ds.executeSQL(insertQuery, insertParams);

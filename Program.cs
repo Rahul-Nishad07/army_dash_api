@@ -40,6 +40,12 @@ ConfigureServices(s =>
                         s.AddSingleton<delete_assignmentlist>();
                          s.AddSingleton<delete_notification>();
                           s.AddSingleton<delete_medicalappointment>();
+                            s.AddSingleton<edit_assignment>();
+                            s.AddSingleton<edit_mission>();
+                             s.AddSingleton<edit_training>();
+
+
+
                 
                  
 
@@ -103,6 +109,9 @@ ConfigureServices(s =>
                           var delete_assignmentlist = e.ServiceProvider.GetRequiredService<delete_assignmentlist>();
                            var delete_notification = e.ServiceProvider.GetRequiredService<delete_notification>();
                             var delete_medicalappointment = e.ServiceProvider.GetRequiredService<delete_medicalappointment>();
+                            var edit_assignment = e.ServiceProvider.GetRequiredService<edit_assignment>();
+                             var edit_mission = e.ServiceProvider.GetRequiredService<edit_mission>();
+                              var edit_training = e.ServiceProvider.GetRequiredService<edit_training>();
                           
 
        
@@ -444,6 +453,36 @@ await http.Response.WriteAsJsonAsync(delete_medicalappointment.Delete_medicalapp
 
 
 
+e.MapPut("edit_assignment",
+[AllowAnonymous] async (HttpContext http) =>
+{
+var body = await new StreamReader(http.Request.Body).ReadToEndAsync();
+requestData rData = JsonSerializer.Deserialize<requestData>(body);
+if (rData.eventID == "1001") // update
+await http.Response.WriteAsJsonAsync(edit_assignment.Edit_assignment(rData));
+});
+
+
+e.MapPut("edit_mission",
+[AllowAnonymous] async (HttpContext http) =>
+{
+var body = await new StreamReader(http.Request.Body).ReadToEndAsync();
+requestData rData = JsonSerializer.Deserialize<requestData>(body);
+if (rData.eventID == "1001") // update
+await http.Response.WriteAsJsonAsync(edit_mission.Edit_mission(rData));
+});
+
+
+e.MapPut("edit_training",
+[AllowAnonymous] async (HttpContext http) =>
+{
+var body = await new StreamReader(http.Request.Body).ReadToEndAsync();
+requestData rData = JsonSerializer.Deserialize<requestData>(body);
+if (rData.eventID == "1001") // update
+await http.Response.WriteAsJsonAsync(edit_training.Edit_training(rData));
+});
+
+
 
  
  e.MapPost("admin/login",
@@ -504,6 +543,8 @@ app.Run();
 public record requestData
 {
     internal int userId;
+    internal object rData;
+
 
     [Required]
   public string eventID { get; set; }
